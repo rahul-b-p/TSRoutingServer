@@ -17,3 +17,4 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./logMiddleware"), exports);
 __exportStar(require("./timeMiddleware"), exports);
 __exportStar(require("./errorMiddleware"), exports);
+__exportStar(require("./calculatorMiddleware"), exports);
