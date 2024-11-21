@@ -1,16 +1,24 @@
 import express from 'express';
-import { getRouter,setRouter } from './routers'; 
-import { addTimestamp, logger } from './middlewares';
+import { getRouter,setRouter,postRouter } from './routers'; 
+import { addTimestamp, errorHandler, logger } from './middlewares';
 
 const app = express();
+const port = 3000;
+
 
 //using middleware at app level
 app.use(addTimestamp)
 app.use(logger)
+
+// using body parser inbuilt middleware of express
+app.use(express.json())
+
+// using routers
 app.use('/getRouter',getRouter);
 app.use('/setRouter',setRouter);
+app.use('/postRouter',postRouter);
 
-const port = 3000;
+app.use(errorHandler)
 
 app.listen(port,()=>{
     console.log(`Server Running at ${port}`);
